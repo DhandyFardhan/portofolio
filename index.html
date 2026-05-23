@@ -177,70 +177,78 @@
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-white reveal">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4">Studi Kasus Proyek</h2>
-            <p class="text-gray-600 text-center max-w-xl mx-auto mb-12">
-                Implementasi nyata dari penggabungan analisis kebutuhan fitur, sistem manajemen data, dan kesiapan pemasaran digital.
-            </p>
+   <!-- SECTION PROJECTS dengan Panel Kontainer Solid yang Menonjol -->
+<section id="projects" class="py-20 bg-white/40 backdrop-blur-xs reveal">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Studi Kasus Proyek</h2>
+        <p class="text-gray-600 text-center max-w-xl mx-auto mb-12">
+            Implementasi nyata dari penggabungan analisis kebutuhan fitur, sistem manajemen data, dan kesiapan pemasaran digital.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 justify-center max-w-4xl mx-auto">
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 justify-center max-w-4xl mx-auto">
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="h-52 overflow-hidden bg-gray-100 border-b border-gray-100 relative cursor-pointer" onclick="openPreview('assets/menu.jpg', 'Toko Kue Kharisma')">
-                            <img src="assets/menu.jpg" alt="Toko Kue Kharisma" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
-                                <span class="bg-white/90 text-gray-800 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1 scale-90 group-hover:scale-100 transition duration-300">
-                                    🔍 Klik untuk memperbesar
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-blue-600 tracking-wider uppercase">E-Commerce & System</span>
-                            <h3 class="text-xl font-bold text-gray-900 mt-1 mb-2 group-hover:text-blue-600 transition-colors">Toko Kue Kharisma</h3>
-                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                                Proyek digitalisasi toko offline ke online. Sukses melahirkan fitur manajemen keranjang, panel admin kelola stok, dan integrasi payment gateway.
-                            </p>
+            <!-- Proyek 1 -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-slate-100 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <!-- KUNCI: Tambahkan class 'reveal-img' dan efek awal 'opacity-0 translate-y-8' -->
+                    <div class="reveal-img h-52 overflow-hidden bg-slate-100 border-b border-slate-100 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/menu.jpg', 'Toko Kue Kharisma')">
+                        <!-- Data-src digunakan agar gambar benar-benar dimuat saat discroll (Lazy Load opsional, atau biarkan src bawaan) -->
+                        <img src="assets/menu.jpg" alt="Toko Kue Kharisma" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
+                            <span class="bg-white/90 text-gray-800 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1 scale-90 group-hover:scale-100 transition duration-300">
+                                🔍 Klik untuk memperbesar
+                            </span>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
-                        <div class="flex flex-wrap gap-1.5 border-t border-gray-100 pt-4">
-                            <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-xs font-semibold rounded-md">Market Analysis</span>
-                            <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-md">Midtrans Sandbox</span>
-                            <span class="px-2 py-0.5 bg-gray-50 text-gray-600 text-xs font-semibold rounded-md">Laravel Base</span>
-                        </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-blue-600 tracking-wider uppercase">E-Commerce & System</span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-1 mb-2 group-hover:text-blue-600 transition-colors">Toko Kue Kharisma</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Proyek digitalisasi toko offline ke online. Sukses melahirkan fitur manajemen keranjang, panel admin kelola stok, dan integrasi payment gateway.
+                        </p>
                     </div>
                 </div>
-
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="h-52 overflow-hidden bg-gray-100 border-b border-gray-100 relative cursor-pointer" onclick="openPreview('assets/celana.jpg', 'Toko Motion Pants')">
-                            <img src="assets/celana.jpg" alt="Toko Motion Pants" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
-                                <span class="bg-white/90 text-gray-800 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1 scale-90 group-hover:scale-100 transition duration-300">
-                                    🔍 Klik untuk memperbesar
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-indigo-600 tracking-wider uppercase">Content Strategy</span>
-                            <h3 class="text-xl font-bold text-gray-900 mt-1 mb-2 group-hover:text-indigo-600 transition-colors">Toko Motion Pants</h3>
-                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                                Merancang strategi pemasaran digital untuk bisnis fashion online. Fokus pada analisis kompetitor, riset pasar, dan perencanaan konten kreatif yang tepat sasaran.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6">
-                        <div class="flex flex-wrap gap-1.5 border-t border-gray-100 pt-4">
-                            <span class="px-2 py-0.5 bg-purple-50 text-purple-600 text-xs font-semibold rounded-md">Competitor Research</span>
-                            <span class="px-2 py-0.5 bg-pink-50 text-pink-600 text-xs font-semibold rounded-md">Content Plan</span>
-                            <span class="px-2 py-0.5 bg-gray-50 text-gray-600 text-xs font-semibold rounded-md">Fashion Niche</span>
-                        </div>
+                <div class="px-6 pb-6">
+                    <div class="flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
+                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-xs font-semibold rounded-md">Market Analysis</span>
+                        <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-md">Midtrans Sandbox</span>
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs font-semibold rounded-md">Laravel Base</span>
                     </div>
                 </div>
             </div>
+
+            <!-- Proyek 2 -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-slate-100 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <!-- KUNCI: Tambahkan class 'reveal-img' dan efek awal 'opacity-0 translate-y-8' -->
+                    <div class="reveal-img h-52 overflow-hidden bg-slate-100 border-b border-slate-100 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/celana.jpg', 'Toko Motion Pants')">
+                        <img src="assets/celana.jpg" alt="Toko Motion Pants" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
+                            <span class="bg-white/90 text-gray-800 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1 scale-90 group-hover:scale-100 transition duration-300">
+                                🔍 Klik untuk memperbesar
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-indigo-600 tracking-wider uppercase">Content Strategy</span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-1 mb-2 group-hover:text-indigo-600 transition-colors">Toko Motion Pants</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Merancang strategi pemasaran digital untuk bisnis fashion online. Fokus pada analisis kompetitor, riset pasar, dan perencanaan konten kreatif yang tepat sasaran.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
+                        <span class="px-2 py-0.5 bg-purple-50 text-purple-600 text-xs font-semibold rounded-md">Competitor Research</span>
+                        <span class="px-2 py-0.5 bg-pink-50 text-pink-600 text-xs font-semibold rounded-md">Content Plan</span>
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs font-semibold rounded-md">Fashion Niche</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0" onclick="closePreview()">
         <button class="absolute top-6 right-6 text-white text-4xl font-light cursor-pointer hover:text-gray-300 hover:rotate-90 transition-all duration-300">&times;</button>
@@ -378,6 +386,29 @@
                 closePreview();
             }
         });
+        // INTERSECTION OBSERVER UNTUK ANIMASI GAMBAR SAAT DI-SCROLL
+document.addEventListener("DOMContentLoaded", function () {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Jika kontainer gambar sudah masuk 15% ke dalam area layar
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    // Hapus class transisi awal dan buat gambar memudar muncul dengan halus
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    // Berhenti mengamati jika sudah muncul sekali
+                    observer.unobserve(entry.target);
+                }, 150); // Delay sedikit (150ms) agar transisinya terasa ritmis profesional
+            }
+        });
+    }, {
+        threshold: 0.15 // Memicu animasi ketika 15% bagian gambar terlihat di layar
+    });
+
+    // Ambil semua elemen gambar yang memiliki class reveal-img
+    const targetImages = document.querySelectorAll('.reveal-img');
+    targetImages.forEach(img => imageObserver.observe(img));
+});
     </script>
 </body>
 </html>
