@@ -7,40 +7,81 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        /* Efek reveal halus saat scroll */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-text-gradient {
+            background-size: 200% auto;
+            animation: gradientShift 4s linear infinite;
+        }
+
+        /* Reveal Section */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(40px);
+            filter: blur(8px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Custom Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 9999px;
+            border: 2px solid #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased font-sans selection:bg-blue-500 selection:text-white relative">
+<body class="bg-neutral-950 text-gray-300 antialiased font-sans selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <!-- BACKGROUND GEOMETRIS ABSTRAK (Biar ga sepi) -->
+    <div class="absolute top-40 left-10 w-48 h-48 border border-blue-500/5 rounded-2xl pointer-events-none animate-float hidden lg:block" style="animation-delay: 1s;"></div>
+    <div class="absolute top-[120vh] right-12 w-64 h-64 border border-indigo-500/5 rounded-full pointer-events-none animate-float hidden lg:block" style="animation-delay: 3s;"></div>
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-neutral-950/70 backdrop-blur-md border-b border-neutral-900 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <span class="text-xl font-bold text-blue-600 tracking-tight hover:scale-105 transition-transform cursor-pointer">DhandyFardhan.</span>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 tracking-tight hover:scale-105 transition-transform cursor-pointer">DhandyFardhan.</span>
                 
                 <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#home" class="text-gray-600 hover:text-blue-600 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-1">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-1">Tentang & Skills</a>
-                    <a href="#experience" class="text-gray-600 hover:text-blue-600 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-1">Pengalaman</a>
-                    <a href="#projects" class="text-gray-600 hover:text-blue-600 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-1">Proyek</a>
-                    <a href="#contact" class="text-gray-600 hover:text-blue-600 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all after:duration-300 pb-1">Kontak</a>
+                    <a href="#home" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Tentang & Skills</a>
+                    <a href="#experience" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Pengalaman</a>
+                    <a href="#projects" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Proyek</a>
+                    <a href="#contact" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Kontak</a>
                 </div>
 
-                <button id="menuBtn" class="md:hidden p-2 text-gray-600 hover:text-blue-600 focus:outline-hidden" aria-label="Toggle Menu">
+                <button id="menuBtn" class="md:hidden p-2 text-gray-400 hover:text-blue-400 focus:outline-hidden" aria-label="Toggle Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -48,102 +89,104 @@
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-100 transition-all duration-300">
+        <div id="mobileMenu" class="hidden md:hidden bg-neutral-950 border-b border-neutral-900 transition-all duration-300">
             <div class="px-4 pt-2 pb-4 space-y-2 font-medium shadow-inner">
-                <a href="#home" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">Home</a>
-                <a href="#about" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">Tentang & Skills</a>
-                <a href="#experience" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">Pengalaman</a>
-                <a href="#projects" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">Proyek</a>
-                <a href="#contact" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">Kontak</a>
+                <a href="#home" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Tentang & Skills</a>
+                <a href="#experience" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Pengalaman</a>
+                <a href="#projects" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Proyek</a>
+                <a href="#contact" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Kontak</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50/50 px-4 overflow-hidden relative">
-        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl hidden md:block"></div>
-        <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-indigo-300/20 rounded-full blur-3xl hidden md:block"></div>
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-neutral-950 via-neutral-950 to-blue-950/20 px-4 overflow-hidden relative">
+        <div class="absolute top-1/4 -left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl hidden md:block animate-pulse"></div>
+        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl hidden md:block animate-pulse" style="animation-duration: 8s;"></div>
 
         <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-8 items-center w-full py-12 animate-fade-in-up">
             <div class="md:col-span-5 md:order-2 flex justify-center relative">
-                <div class="absolute inset-0 bg-linear-to-tr from-blue-400 to-indigo-400 rounded-full blur-2xl opacity-30 scale-95 animate-pulse"></div>
-                <div class="relative group cursor-pointer">
-                    <img src="assets/685400224_18049580348765838_7639171904448148061_n.jpg" alt="Dhandy Fardhan" class="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-white transition-all duration-500 group-hover:scale-105 group-hover:rotate-2">
-                    <div class="absolute bottom-2 right-2 bg-white text-gray-800 p-2.5 rounded-full shadow-lg border border-gray-100 hidden md:flex items-center justify-center hover:rotate-12 transition-transform duration-300">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-full blur-3xl opacity-10 scale-95 animate-pulse"></div>
+                <div class="relative group cursor-pointer animate-float">
+                    <img src="assets/685400224_18049580348765838_7639171904448148061_n.jpg" alt="Dhandy Fardhan" class="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full object-cover shadow-2xl border-2 border-neutral-800 group-hover:border-blue-500/50 transition-all duration-500 group-hover:scale-105">
+                    <div class="absolute bottom-2 right-2 bg-neutral-900 text-white p-2.5 rounded-full shadow-lg border border-neutral-800 hidden md:flex items-center justify-center hover:rotate-12 transition-transform duration-300">
                         🚀
                     </div>
                 </div>
             </div>
 
             <div class="md:col-span-7 md:order-1 text-center md:text-left space-y-5">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 text-blue-600 text-xs sm:text-sm font-semibold rounded-full border border-blue-100 shadow-xs">
-                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-950/40 text-blue-400 text-xs sm:text-sm font-semibold rounded-full border border-blue-900/30 shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
                     Project Analyst & Digital Marketer
                 </div>
                 
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-tight">
-                    Hi, Saya <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Dhandy Fardhan</span>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                    Hi, Saya <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-400 animate-text-gradient font-black">Dhandy Fardhan</span>
                 </h1>
 
-                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto md:mx-0 leading-relaxed font-normal">
-                    Saya adalah siswa PPLG dari <strong class="text-gray-900 font-semibold">SMKN 1 Ciomas</strong> yang berfokus sebagai <strong class="text-blue-600 font-semibold">Digital Marketing Strategist, Analyst, & Administrator</strong>. Memiliki passion kuat dalam mengeksekusi strategi pemasaran digital, manajemen administrasi data bisnis, riset kompetitor, optimasi landing page, hingga penyusunan laporan performa promosi yang terstruktur dan akurat.
+                <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto md:mx-0 leading-relaxed font-normal">
+                    Saya adalah siswa PPLG dari <strong class="text-white font-semibold">SMKN 1 Ciomas</strong> yang berfokus sebagai <strong class="text-blue-400 font-semibold">Digital Marketing Strategist, Analyst, & Administrator</strong>. Memiliki passion kuat dalam mengeksekusi strategi pemasaran digital, manajemen administrasi data bisnis, riset kompetitor, optimasi landing page, hingga penyusunan laporan performa promosi yang terstruktur dan akurat.
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-3.5 pt-2">
-                    <a href="#experience" class="w-full sm:w-auto text-center px-6 py-3.5 bg-blue-600 text-white font-medium rounded-xl shadow-md shadow-blue-500/20 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">Lihat Pengalaman</a>
-                    <a href="#contact" class="w-full sm:w-auto text-center px-6 py-3.5 border border-gray-200 text-gray-700 font-medium rounded-xl bg-white shadow-xs hover:bg-gray-50 hover:border-gray-300 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">Hubungi Saya</a>
+                    <a href="#experience" class="w-full sm:w-auto text-center px-6 py-3.5 bg-blue-600 text-white font-medium rounded-xl shadow-lg shadow-blue-600/10 hover:bg-blue-500 hover:shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">Lihat Pengalaman</a>
+                    <a href="#contact" class="w-full sm:w-auto text-center px-6 py-3.5 border border-neutral-800 text-gray-300 font-medium rounded-xl bg-neutral-900/50 backdrop-blur-xs hover:bg-neutral-900 hover:border-neutral-700 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">Hubungi Saya</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white reveal">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-neutral-900/30 border-t border-neutral-900/60 reveal">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 relative inline-block left-1/2 -translate-x-1/2 after:absolute after:-bottom-3 after:left-1/4 after:w-1/2 after:h-1 after:bg-blue-600 after:rounded-full">Tentang Saya & Keahlian</h2>
+            <h2 class="text-3xl font-bold text-center text-white mb-12 relative inline-block left-1/2 -translate-x-1/2 after:absolute after:-bottom-3 after:left-1/4 after:w-1/2 after:h-1 after:bg-blue-500 after:rounded-full">Tentang Saya & Keahlian</h2>
             <div class="grid md:grid-cols-2 gap-12 items-start mt-4">
                 <div>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Saya Dhandy Fardhan, murid dari SMKN 1 Ciomas (PPLG). Saya memiliki minat yang besar dalam bidang analisis, pemecahan masalah, serta strategi <strong>digital marketing</strong> untuk mengoptimalkan potensi sebuah proyek agar berjalan lebih efektif, terstruktur, dan tepat sasaran bisnis.
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Saya Dhandy Fardhan, murid dari SMKN 1 Ciomas (PPLG). Saya memiliki minat yang besar dalam bidang analisis, pemecahan masalah, serta strategi <strong class="text-white">digital marketing</strong> untuk mengoptimalkan potensi sebuah proyek agar berjalan lebih efektif, terstruktur, dan tepat sasaran bisnis.
                     </p>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Selain merancang strategi dan menganalisis kebutuhan pasar, saya juga menguasai dasar-dasar pengembangan website. Kombinasi ini membuat saya mampu menjembatani kebutuhan bisnis digital dengan implementasi teknis secara optimal.
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Selain merancang strategi dan menganalisis kebutuhan pasar, saya juga menguasai dasar-dasar pengembangan website. Kombinasi ini membuat saya mampu menjembatani kebutuhan bisnis digital dengan implementation teknis secara optimal.
                     </p>
-                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100 hover:shadow-inner transition-all duration-300">
-                        <p class="text-sm text-blue-800 italic">
+                    <div class="p-4 bg-blue-950/20 rounded-xl border border-blue-900/30 transition-all duration-300">
+                        <p class="text-sm text-blue-300 italic">
                             "Menjadi pribadi yang disiplin, bertanggung jawab, dan memiliki komitmen tinggi untuk terus belajar mengikuti perkembangan teknologi digital dan tren pasar modern."
                         </p>
                     </div>
                 </div>
                 <div class="space-y-6">
                     <div>
-                        <h3 class="text-sm font-bold text-gray-400 tracking-wider uppercase mb-3">Keahlian Utama</h3>
+                        <h3 class="text-sm font-bold text-gray-600 tracking-wider uppercase mb-3">Keahlian Utama</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg shadow-xs hover:bg-blue-700 hover:scale-105 transition-all duration-200 cursor-default">Digital Marketing Strategy</span>
-                            <span class="px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg shadow-xs hover:bg-blue-700 hover:scale-105 transition-all duration-200 cursor-default">Digital Marketing</span>
-                            <span class="px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg shadow-xs hover:bg-blue-700 hover:scale-105 transition-all duration-200 cursor-default">Competitor & Market Research</span>
-                            <span class="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm font-medium rounded-lg border border-blue-100 hover:bg-blue-100 hover:scale-105 transition-all duration-200 cursor-default">Manajemen Data Produk</span>
-                            <span class="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm font-medium rounded-lg border border-blue-100 hover:bg-blue-100 hover:scale-105 transition-all duration-200 cursor-default">Conversion Rate Optimization (CRO)</span>
-                            <span class="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm font-medium rounded-lg border border-blue-100 hover:bg-blue-100 hover:scale-105 transition-all duration-200 cursor-default">Administrasi Data</span>
+                            <span class="px-3 py-1.5 bg-blue-600/10 text-blue-400 text-sm font-medium rounded-lg border border-blue-500/20 hover:bg-blue-600 hover:text-white transition-all duration-200 cursor-default">Digital Marketing Strategy</span>
+                            <span class="px-3 py-1.5 bg-blue-600/10 text-blue-400 text-sm font-medium rounded-lg border border-blue-500/20 hover:bg-blue-600 hover:text-white transition-all duration-200 cursor-default">Digital Marketing</span>
+                            <span class="px-3 py-1.5 bg-blue-600/10 text-blue-400 text-sm font-medium rounded-lg border border-blue-500/20 hover:bg-blue-600 hover:text-white transition-all duration-200 cursor-default">Competitor & Market Research</span>
+                            <span class="px-3 py-1.5 bg-neutral-900 text-gray-400 text-sm font-medium rounded-lg border border-neutral-800 hover:border-neutral-700 cursor-default">Manajemen Data Produk</span>
+                            <span class="px-3 py-1.5 bg-neutral-900 text-gray-400 text-sm font-medium rounded-lg border border-neutral-800 hover:border-neutral-700 cursor-default">Conversion Rate Optimization (CRO)</span>
+                            <span class="px-3 py-1.5 bg-neutral-900 text-gray-400 text-sm font-medium rounded-lg border border-neutral-800 hover:border-neutral-700 cursor-default">Administrasi Data</span>
                         </div>
                     </div>
 
                     <div>
-                        <h3 class="text-sm font-bold text-gray-400 tracking-wider uppercase mb-3">Teknologi Pendukung (IT)</h3>
+                        <h3 class="text-sm font-bold text-gray-600 tracking-wider uppercase mb-3">Teknologi Pendukung (IT)</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 bg-amber-50 text-amber-700 border border-amber-200 text-sm font-medium rounded-lg hover:bg-amber-100 hover:scale-105 transition-all duration-200 cursor-default">HTML5 & CSS3 Dasar</span>
-                            <span class="px-3 py-1.5 bg-red-50 text-red-700 border border-red-200 text-sm font-medium rounded-lg hover:bg-red-100 hover:scale-105 transition-all duration-200 cursor-default">PHP & Laravel (Sistem Dasar)</span>
-                            <span class="px-3 py-1.5 bg-purple-50 text-purple-700 border border-purple-200 text-sm font-medium rounded-lg hover:bg-purple-100 hover:scale-105 transition-all duration-200 cursor-default">Git & GitHub</span>
-                            <span class="px-3 py-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-sm font-medium rounded-lg hover:bg-emerald-100 hover:scale-105 transition-all duration-200 cursor-default">Input & Olah Data</span>
+                            <span class="px-3 py-1.5 bg-neutral-900 text-amber-500/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-amber-500/30 cursor-default">HTML5 & CSS3 Dasar</span>
+                            <span class="px-3 py-1.5 bg-neutral-900 text-red-400/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-red-400/30 cursor-default">PHP & Laravel (Sistem Dasar)</span>
+                            <span class="px-3 py-1.5 bg-neutral-900 text-purple-400/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-purple-400/30 cursor-default">Git & GitHub</span>
+                            <span class="px-3 py-1.5 bg-neutral-900 text-emerald-400/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-emerald-400/30 cursor-default">Input & Olah Data</span>
                         </div>
                     </div>
 
                     <div>
-                        <h3 class="text-sm font-bold text-gray-400 tracking-wider uppercase mb-3">Karakter Kerja</h3>
+                        <h3 class="text-sm font-bold text-gray-600 tracking-wider uppercase mb-3">Karakter Kerja</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md border border-gray-200 hover:bg-gray-200 hover:text-gray-900 transition-colors cursor-default">Problem Solving</span>
-                            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md border border-gray-200 hover:bg-gray-200 hover:text-gray-900 transition-colors cursor-default">Komunikasi Efektif</span>
-                            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md border border-gray-200 hover:bg-gray-200 hover:text-gray-900 transition-colors cursor-default">Kerjasama Tim</span>
-                            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md border border-gray-200 hover:bg-gray-200 hover:text-gray-900 transition-colors cursor-default">Manajemen Waktu</span>
-                            <span class="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md border border-gray-200 hover:bg-gray-200 hover:text-gray-900 transition-colors cursor-default">Disiplin & Tanggung Jawab</span>
+                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Problem Solving</span>
+                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Komunikasi Efektif</span>
+                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Kerjasama Tim</span>
+                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Manajemen Waktu</span>
+                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Disiplin & Tanggung Jawab</span>
                         </div>
                     </div>
                 </div>
@@ -151,144 +194,147 @@
         </div>
     </section>
 
-    <section id="experience" class="py-20 bg-gray-50 border-t border-b border-gray-100 reveal">
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="py-20 bg-neutral-950 border-t border-b border-neutral-900/70 reveal">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4">Pengalaman Kerja & Proyek</h2>
-            <p class="text-gray-600 text-center max-w-xl mx-auto mb-12">Rekam jejak kontribusi saya dalam pengembangan proyek digital sepanjang tahun 2024 - 2025.</p>
+            <h2 class="text-3xl font-bold text-center text-white mb-4">Pengalaman Kerja & Proyek</h2>
+            <p class="text-gray-400 text-center max-w-xl mx-auto mb-12">Rekam jejak kontribusi saya dalam pengembangan proyek digital sepanjang tahun 2024 - 2025.</p>
             
             <div class="space-y-6">
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-neutral-900/40 backdrop-blur-xs p-6 rounded-2xl border border-neutral-900 hover:border-neutral-800 shadow-md hover:shadow-blue-500/[0.02] hover:-translate-y-1 transition-all duration-300 group">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Project Analyst & Digital Strategist</h3>
-                            <p class="text-sm text-blue-600 font-medium">Pengembangan Platform Digital UMKM</p>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Project Analyst & Digital Strategist</h3>
+                            <p class="text-sm text-blue-400 font-medium">Pengembangan Platform Digital UMKM</p>
                         </div>
-                        <span class="mt-2 sm:mt-0 text-xs font-semibold px-3 py-1 bg-gray-100 text-gray-600 rounded-full w-max group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">2024 - 2025</span>
+                        <span class="mt-2 sm:mt-0 text-xs font-semibold px-3 py-1 bg-neutral-900 text-gray-400 rounded-full w-max border border-neutral-800 group-hover:bg-blue-950/50 group-hover:text-blue-400 group-hover:border-blue-900/50 transition-colors">2024 - 2025</span>
                     </div>
-                    <ul class="space-y-2.5 text-gray-600 text-sm list-disc pl-5">
-                        <li><strong>Inisiasi Media Penjualan Online:</strong> Merancang dan membangun website UMKM sebagai sarana utama penjualan produk guna memperluas jangkauan pasar secara digital.</li>
-                        <li><strong>Optimasi Pengalaman Pengguna (UI/UX):</strong> Menyusun dan membenahi tampilan website agar lebih interaktif, informatif, dan memudahkan pelanggan dalam bertransaksi.</li>
-                        <li><strong>Analisis Kebutuhan Fitur:</strong> Mengidentifikasi, menganalisis, dan memetakan fitur-fitur penting yang krusial sesuai dengan target kebutuhan operasional penjualan ritel.</li>
-                        <li><strong>Manajemen Data Produk:</strong> Mengelola struktur data dan input informasi produk pada sistem e-commerce agar katalog terarsip dengan rapi dan mudah dicari konsumen.</li>
-                        <li><strong>Kolaborasi Lintas Tim:</strong> Bekerja sama secara aktif dengan tim teknis dalam proses pengembangan website dari tahap perancangan strategi hingga sistem siap digunakan (*live*).</li>
+                    <ul class="space-y-2.5 text-gray-400 text-sm list-disc pl-5">
+                        <li><strong class="text-gray-200">Inisiasi Media Penjualan Online:</strong> Merancang dan membangun website UMKM sebagai sarana utama penjualan produk guna memperluas jangkauan pasar secara digital.</li>
+                        <li><strong class="text-gray-200">Optimasi Pengalaman Pengguna (UI/UX):</strong> Menyusun dan membenahi tampilan website agar lebih interaktif, informatif, dan memudahkan pelanggan dalam bertransaksi.</li>
+                        <li><strong class="text-gray-200">Analisis Kebutuhan Fitur:</strong> Mengidentifikasi, menganalisis, dan memetakan fitur-fitur penting yang krusial sesuai dengan target kebutuhan operasional penjualan ritel.</li>
+                        <li><strong class="text-gray-200">Manajemen Data Produk:</strong> Mengelola struktur data dan input informasi produk pada sistem e-commerce agar katalog terarsip dengan rapi dan mudah dicari konsumen.</li>
+                        <li><strong class="text-gray-200">Kolaborasi Lintas Tim:</strong> Bekerja sama secara aktif dengan tim teknis dalam proses pengembangan website dari tahap perancangan strategi hingga sistem siap digunakan (*live*).</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- SECTION PROJECTS dengan Panel Kontainer Solid yang Menonjol -->
-<section id="projects" class="py-20 bg-white/40 backdrop-blur-xs reveal">
-    <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Studi Kasus Proyek</h2>
-        <p class="text-gray-600 text-center max-w-xl mx-auto mb-12">
-            Implementasi nyata dari penggabungan analisis kebutuhan fitur, sistem manajemen data, dan kesiapan pemasaran digital.
-        </p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 justify-center max-w-4xl mx-auto">
-            
-            <!-- Proyek 1 -->
-            <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-slate-100 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
-                <div>
-                    <!-- KUNCI: Tambahkan class 'reveal-img' dan efek awal 'opacity-0 translate-y-8' -->
-                    <div class="reveal-img h-52 overflow-hidden bg-slate-100 border-b border-slate-100 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/menu.jpg', 'Toko Kue Kharisma')">
-                        <!-- Data-src digunakan agar gambar benar-benar dimuat saat discroll (Lazy Load opsional, atau biarkan src bawaan) -->
-                        <img src="assets/menu.jpg" alt="Toko Kue Kharisma" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
-                            <span class="bg-white/90 text-gray-800 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1 scale-90 group-hover:scale-100 transition duration-300">
-                                🔍 Klik untuk memperbesar
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-blue-600 tracking-wider uppercase">E-Commerce & System</span>
-                        <h3 class="text-xl font-bold text-gray-900 mt-1 mb-2 group-hover:text-blue-600 transition-colors">Toko Kue Kharisma</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                            Proyek digitalisasi toko offline ke online. Sukses melahirkan fitur manajemen keranjang, panel admin kelola stok, dan integrasi payment gateway.
-                        </p>
-                    </div>
-                </div>
-                <div class="px-6 pb-6">
-                    <div class="flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
-                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-xs font-semibold rounded-md">Market Analysis</span>
-                        <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-md">Midtrans Sandbox</span>
-                        <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs font-semibold rounded-md">Laravel Base</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyek 2 -->
-            <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-slate-100 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
-                <div>
-                    <!-- KUNCI: Tambahkan class 'reveal-img' dan efek awal 'opacity-0 translate-y-8' -->
-                    <div class="reveal-img h-52 overflow-hidden bg-slate-100 border-b border-slate-100 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/celana.jpg', 'Toko Motion Pants')">
-                        <img src="assets/celana.jpg" alt="Toko Motion Pants" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
-                            <span class="bg-white/90 text-gray-800 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1 scale-90 group-hover:scale-100 transition duration-300">
-                                🔍 Klik untuk memperbesar
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-indigo-600 tracking-wider uppercase">Content Strategy</span>
-                        <h3 class="text-xl font-bold text-gray-900 mt-1 mb-2 group-hover:text-indigo-600 transition-colors">Toko Motion Pants</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                            Merancang strategi pemasaran digital untuk bisnis fashion online. Fokus pada analisis kompetitor, riset pasar, dan perencanaan konten kreatif yang tepat sasaran.
-                        </p>
-                    </div>
-                </div>
-                <div class="px-6 pb-6">
-                    <div class="flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
-                        <span class="px-2 py-0.5 bg-purple-50 text-purple-600 text-xs font-semibold rounded-md">Competitor Research</span>
-                        <span class="px-2 py-0.5 bg-pink-50 text-pink-600 text-xs font-semibold rounded-md">Content Plan</span>
-                        <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs font-semibold rounded-md">Fashion Niche</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0" onclick="closePreview()">
-        <button class="absolute top-6 right-6 text-white text-4xl font-light cursor-pointer hover:text-gray-300 hover:rotate-90 transition-all duration-300">&times;</button>
-        <div class="max-w-4xl max-h-[85vh] relative flex flex-col items-center scale-90 transition-transform duration-300" id="modalContainer" onclick="event.stopPropagation()">
-            <img id="modalImg" src="" alt="" class="max-w-full max-h-[75vh] rounded-xl shadow-2xl border border-white/10 object-contain">
-            <p id="modalCaption" class="text-white text-base font-medium mt-4 tracking-wide bg-black/40 px-4 py-1.5 rounded-full backdrop-blur-md"></p>
-        </div>
-    </div>
-
-    <section id="contact" class="py-20 bg-gray-50 border-t border-gray-100 reveal">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Mari Terhubung</h2>
-            <p class="text-gray-600 max-w-xl mx-auto mb-12">
-                Tertarik untuk berkolaborasi, mendiskusikan analisis proyek bisnis digital, atau membutuhkan strategi pemasaran online? Silakan hubungi saya.
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 bg-neutral-950 reveal">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-white">Studi Kasus Proyek</h2>
+            <p class="text-gray-400 text-center max-w-xl mx-auto mb-12">
+                Implementasi nyata dari penggabungan analisis kebutuhan fitur, sistem manajemen data, dan kesiapan pemasaran digital.
             </p>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6 font-medium text-gray-600">
-                <a href="mailto:dhandyfardhan5@gmail.com" class="hover:text-blue-600 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-gray-200 shadow-xs text-sm sm:text-base">
-                    <span>📧</span> dhandyfardhan5@gmail.com
-                </a>
-                <a href="https://wa.me/6285882722280" target="_blank" class="hover:text-green-600 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-gray-200 shadow-xs text-sm sm:text-base">
-                    <span>📞</span> +62 858-8272-2280
-                </a>
-                <a href="https://github.com/DhandyFardhan" target="_blank" class="hover:text-gray-900 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-gray-200 shadow-xs text-sm sm:text-base">
-                    <span>💻</span> GitHub Profil
-                </a>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 justify-center max-w-4xl mx-auto">
+                
+                <!-- Proyek 1 (Toko Kue Kharisma) -->
+                <div class="group bg-neutral-900/30 rounded-2xl overflow-hidden shadow-xl border border-neutral-900/80 hover:border-blue-500/30 hover:shadow-blue-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="reveal-img h-52 overflow-hidden bg-neutral-900 border-b border-neutral-900 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/menu.jpg', 'Toko Kue Kharisma')">
+                            <img src="assets/menu.jpg" alt="Toko Kue Kharisma" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
+                                <span class="bg-neutral-900/90 border border-neutral-800 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1">
+                                    🔍 Klik untuk memperbesar
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-blue-400 tracking-wider uppercase">E-Commerce & System</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-2 group-hover:text-blue-400 transition-colors">Toko Kue Kharisma</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                                Proyek digitalisasi toko offline ke online. Sukses melahirkan fitur manajemen keranjang, panel admin kelola stok, dan integrasi payment gateway.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="flex flex-wrap gap-1.5 border-t border-neutral-900 pt-4">
+                            <span class="px-2 py-0.5 bg-blue-950/50 text-blue-400 text-xs font-semibold rounded-md border border-blue-900/30">Market Analysis</span>
+                            <span class="px-2 py-0.5 bg-indigo-950/50 text-indigo-400 text-xs font-semibold rounded-md border border-indigo-900/30">Midtrans Sandbox</span>
+                            <span class="px-2 py-0.5 bg-neutral-900 text-gray-400 text-xs font-semibold rounded-md border border-neutral-800">Laravel Base</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyek 2 (Toko Motion Pants) -->
+                <div class="group bg-neutral-900/30 rounded-2xl overflow-hidden shadow-xl border border-neutral-900/80 hover:border-indigo-500/30 hover:shadow-indigo-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="reveal-img h-52 overflow-hidden bg-neutral-900 border-b border-neutral-900 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/celana.jpg', 'Toko Motion Pants')">
+                            <img src="assets/celana.jpg" alt="Toko Motion Pants" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-xs">
+                                <span class="bg-neutral-900/90 border border-neutral-800 text-white px-3 py-1.5 rounded-xl text-xs font-semibold shadow-md flex items-center gap-1">
+                                    🔍 Klik untuk memperbesar
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-indigo-400 tracking-wider uppercase">Content Strategy</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-2 group-hover:text-indigo-400 transition-colors">Toko Motion Pants</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                                Merancang strategi pemasaran digital untuk bisnis fashion online. Fokus pada analisis kompetitor, riset pasar, dan perencanaan konten kreatif yang tepat sasaran.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="flex flex-wrap gap-1.5 border-t border-neutral-900 pt-4">
+                            <span class="px-2 py-0.5 bg-purple-950/50 text-purple-400 text-xs font-semibold rounded-md border border-purple-900/30">Competitor Research</span>
+                            <span class="px-2 py-0.5 bg-pink-950/50 text-pink-400 text-xs font-semibold rounded-md border border-pink-900/30">Content Plan</span>
+                            <span class="px-2 py-0.5 bg-neutral-900 text-gray-400 text-xs font-semibold rounded-md border border-neutral-800">Fashion Niche</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <p class="text-xs text-gray-400 mt-12 tracking-wide">📍 Ciomas, Kab. Bogor, Jawa Barat, Indonesia</p>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm border-t border-gray-800">
+    <!-- LIGHTBOX PREVIEW MODAL -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0" onclick="closePreview()">
+        <button class="absolute top-6 right-6 text-white text-4xl font-light cursor-pointer hover:text-gray-300 hover:rotate-90 transition-all duration-300">&times;</button>
+        <div class="max-w-4xl max-h-[85vh] relative flex flex-col items-center scale-90 transition-transform duration-300" id="modalContainer" onclick="event.stopPropagation()">
+            <img id="modalImg" src="" alt="" class="max-w-full max-h-[75vh] rounded-xl shadow-2xl border border-white/10 object-contain">
+            <p id="modalCaption" class="text-white text-base font-medium mt-4 tracking-wide bg-neutral-900/80 px-4 py-1.5 rounded-full backdrop-blur-md border border-neutral-800"></p>
+        </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-neutral-950 border-t border-neutral-900/60 reveal">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Mari Terhubung</h2>
+            <p class="text-gray-400 max-w-xl mx-auto mb-12">
+                Tertarik untuk berkolaborasi, mendiskusikan analisis proyek bisnis digital, atau membutuhkan strategi pemasaran online? Silakan hubungi saya.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 font-medium text-gray-300">
+                <a href="mailto:dhandyfardhan5@gmail.com" class="hover:text-blue-400 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 bg-neutral-900/50 px-4 py-2.5 rounded-xl border border-neutral-900 shadow-xs text-sm sm:text-base">
+                    <span>📧</span> dhandyfardhan5@gmail.com
+                </a>
+                <a href="https://wa.me/6285882722280" target="_blank" class="hover:text-green-400 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 bg-neutral-900/50 px-4 py-2.5 rounded-xl border border-neutral-900 shadow-xs text-sm sm:text-base">
+                    <span>📞</span> +62 858-8272-2280
+                </a>
+                <a href="https://github.com/DhandyFardhan" target="_blank" class="hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 bg-neutral-900/50 px-4 py-2.5 rounded-xl border border-neutral-900 shadow-xs text-sm sm:text-base">
+                    <span>💻</span> GitHub Profil
+                </a>
+            </div>
+            <p class="text-xs text-gray-600 mt-12 tracking-wide">📍 Ciomas, Kab. Bogor, Jawa Barat, Indonesia</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-neutral-950 text-gray-600 py-8 text-center text-sm border-t border-neutral-900">
         <p>&copy; 2026 Dhandy Fardhan.</p>
     </footer>
 
-    <button id="backToTop" class="fixed bottom-6 right-6 z-40 bg-blue-600 text-white p-3 rounded-full shadow-lg shadow-blue-500/20 translate-y-20 opacity-0 transition-all duration-300 hover:bg-blue-700 hover:scale-110 active:scale-90 cursor-pointer" aria-label="Back to Top">
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" class="fixed bottom-6 right-6 z-40 bg-blue-600 text-white p-3 rounded-full shadow-lg shadow-blue-600/20 translate-y-20 opacity-0 transition-all duration-300 hover:bg-blue-500 hover:scale-110 active:scale-90 cursor-pointer" aria-label="Back to Top">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
         </svg>
     </button>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         // MOBILE HAMBURGER MENU INTERACTION
         const menuBtn = document.getElementById('menuBtn');
@@ -297,7 +343,6 @@
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Ganti icon hamburger ke silang saat terbuka
             if (mobileMenu.classList.contains('hidden')) {
                 menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
             } else {
@@ -305,7 +350,6 @@
             }
         });
 
-        // Tutup menu otomatis jika salah satu link di-klik (Sangat bagus untuk HP)
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -319,7 +363,6 @@
         const backToTopBtn = document.getElementById('backToTop');
 
         function handleScroll() {
-            // Reveal animation logic
             reveals.forEach(reveal => {
                 const windowHeight = window.innerHeight;
                 const elementTop = reveal.getBoundingClientRect().top;
@@ -330,7 +373,6 @@
                 }
             });
 
-            // Back to top logic
             if (window.scrollY > 300) {
                 backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
             } else {
@@ -339,7 +381,6 @@
         }
 
         window.addEventListener('scroll', handleScroll);
-        // Jalankan sekali saat load pertama kali
         window.addEventListener('load', handleScroll);
 
         backToTopBtn.addEventListener('click', () => {
@@ -386,29 +427,26 @@
                 closePreview();
             }
         });
-        // INTERSECTION OBSERVER UNTUK ANIMASI GAMBAR SAAT DI-SCROLL
-document.addEventListener("DOMContentLoaded", function () {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            // Jika kontainer gambar sudah masuk 15% ke dalam area layar
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    // Hapus class transisi awal dan buat gambar memudar muncul dengan halus
-                    entry.target.classList.remove('opacity-0', 'translate-y-8');
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    // Berhenti mengamati jika sudah muncul sekali
-                    observer.unobserve(entry.target);
-                }, 150); // Delay sedikit (150ms) agar transisinya terasa ritmis profesional
-            }
-        });
-    }, {
-        threshold: 0.15 // Memicu animasi ketika 15% bagian gambar terlihat di layar
-    });
 
-    // Ambil semua elemen gambar yang memiliki class reveal-img
-    const targetImages = document.querySelectorAll('.reveal-img');
-    targetImages.forEach(img => imageObserver.observe(img));
-});
+        // INTERSECTION OBSERVER FOR IMAGES
+        document.addEventListener("DOMContentLoaded", function () {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.remove('opacity-0', 'translate-y-8');
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                            observer.unobserve(entry.target);
+                        }, 150);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            const targetImages = document.querySelectorAll('.reveal-img');
+            targetImages.forEach(img => imageObserver.observe(img));
+        });
     </script>
 </body>
 </html>
