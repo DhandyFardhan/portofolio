@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhandy Fardhan | Portofolio Analisis & Digital Marketing</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
@@ -19,6 +20,11 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        /* Animasi Marquee Bergerak ke Samping */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
         .animate-fade-in-up {
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -29,6 +35,14 @@
         .animate-text-gradient {
             background-size: 200% auto;
             animation: gradientShift 4s linear infinite;
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
         }
 
         /* Reveal Section */
@@ -43,7 +57,9 @@
             transform: translateY(0);
             filter: blur(0);
         }
-
+ body{
+    font-family:'Outfit',sans-serif;
+}
         /* Custom Modern Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
@@ -59,15 +75,33 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #3b82f6;
         }
+#cursor-glow{
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    border-radius: 9999px;
+    background: radial-gradient(
+        circle,
+        rgba(59,130,246,0.16) 0%,
+        rgba(99,102,241,0.10) 30%,
+        transparent 70%
+    );
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    filter: blur(35px);
+    z-index: 0;
+    transition:
+        left 0.08s linear,
+        top 0.08s linear;
+}
+
     </style>
 </head>
 <body class="bg-neutral-950 text-gray-300 antialiased font-sans selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
-
-    <!-- BACKGROUND GEOMETRIS ABSTRAK (Biar ga sepi) -->
+     <div id="cursor-glow"></div>
     <div class="absolute top-40 left-10 w-48 h-48 border border-blue-500/5 rounded-2xl pointer-events-none animate-float hidden lg:block" style="animation-delay: 1s;"></div>
     <div class="absolute top-[120vh] right-12 w-64 h-64 border border-indigo-500/5 rounded-full pointer-events-none animate-float hidden lg:block" style="animation-delay: 3s;"></div>
 
-    <!-- NAVBAR -->
     <nav class="sticky top-0 z-50 bg-neutral-950/70 backdrop-blur-md border-b border-neutral-900 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -76,7 +110,6 @@
                 <div class="hidden md:flex space-x-8 font-medium">
                     <a href="#home" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Home</a>
                     <a href="#about" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Tentang & Skills</a>
-                    <a href="#experience" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Pengalaman</a>
                     <a href="#projects" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Proyek</a>
                     <a href="#contact" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Kontak</a>
                 </div>
@@ -93,15 +126,14 @@
             <div class="px-4 pt-2 pb-4 space-y-2 font-medium shadow-inner">
                 <a href="#home" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Home</a>
                 <a href="#about" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Tentang & Skills</a>
-                <a href="#experience" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Pengalaman</a>
                 <a href="#projects" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Proyek</a>
                 <a href="#contact" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Kontak</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section id="home" class="min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-neutral-950 via-neutral-950 to-blue-950/20 px-4 overflow-hidden relative">
+        <div class="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         <div class="absolute top-1/4 -left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl hidden md:block animate-pulse"></div>
         <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl hidden md:block animate-pulse" style="animation-duration: 8s;"></div>
 
@@ -131,24 +163,44 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-3.5 pt-2">
-                    <a href="#experience" class="w-full sm:w-auto text-center px-6 py-3.5 bg-blue-600 text-white font-medium rounded-xl shadow-lg shadow-blue-600/10 hover:bg-blue-500 hover:shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">Lihat Pengalaman</a>
+                    <a href="#about" class="w-full sm:w-auto text-center px-6 py-3.5 bg-blue-600 text-white font-medium rounded-xl shadow-lg shadow-blue-600/10 hover:bg-blue-500 hover:shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">Lihat Keahlian</a>
                     <a href="#contact" class="w-full sm:w-auto text-center px-6 py-3.5 border border-neutral-800 text-gray-300 font-medium rounded-xl bg-neutral-900/50 backdrop-blur-xs hover:bg-neutral-900 hover:border-neutral-700 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">Hubungi Saya</a>
                 </div>
+            <div class="grid grid-cols-3 gap-4 pt-8 max-w-md mx-auto md:mx-0">
+    
+    <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center">
+    <h3 class="text-2xl font-bold text-white counter" data-target="2">0</h3>
+<h3 class="text-2xl font-bold text-white counter" data-target="100">0%</h3>
+        <p class="text-xs text-gray-400">Project</p>
+    </div>
+
+    <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center">
+        <h3 class="text-2xl font-bold text-white counter" data-target="4">0</h3>
+        <p class="text-xs text-gray-400">Skills</p>
+    </div>
+
+    <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center">
+        <h3 class="text-2xl font-bold text-white counter" data-target="100">0%</h3>
+        <p class="text-xs text-gray-400">Commitment</p>
+    </div>
+
+</div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
     <section id="about" class="py-20 bg-neutral-900/30 border-t border-neutral-900/60 reveal">
-        <div class="max-w-4xl mx-auto px-4">
+        <div class="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-white mb-12 relative inline-block left-1/2 -translate-x-1/2 after:absolute after:-bottom-3 after:left-1/4 after:w-1/2 after:h-1 after:bg-blue-500 after:rounded-full">Tentang Saya & Keahlian</h2>
-            <div class="grid md:grid-cols-2 gap-12 items-start mt-4">
-                <div>
-                    <p class="text-gray-400 leading-relaxed mb-4">
+            
+            <div class="grid md:grid-cols-2 gap-12 items-start mt-4 mb-16">
+                <div class="space-y-4">
+                    <p class="text-gray-400 leading-relaxed">
                         Saya Dhandy Fardhan, murid dari SMKN 1 Ciomas (PPLG). Saya memiliki minat yang besar dalam bidang analisis, pemecahan masalah, serta strategi <strong class="text-white">digital marketing</strong> untuk mengoptimalkan potensi sebuah proyek agar berjalan lebih efektif, terstruktur, dan tepat sasaran bisnis.
                     </p>
-                    <p class="text-gray-400 leading-relaxed mb-4">
-                        Selain merancang strategi dan menganalisis kebutuhan pasar, saya juga menguasai dasar-dasar pengembangan website. Kombinasi ini membuat saya mampu menjembatani kebutuhan bisnis digital dengan implementation teknis secara optimal.
+                    <p class="text-gray-400 leading-relaxed">
+                        Selain merancang strategi dan menganalisis kebutuhan pasar, saya juga menguasai dasar-dasar pengembangan website dengan ekosistem modern. Kombinasi ini membuat saya mampu menjembatani kebutuhan bisnis digital dengan implementasi teknis secara optimal.
                     </p>
                     <div class="p-4 bg-blue-950/20 rounded-xl border border-blue-900/30 transition-all duration-300">
                         <p class="text-sm text-blue-300 italic">
@@ -156,73 +208,114 @@
                         </p>
                     </div>
                 </div>
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-sm font-bold text-gray-600 tracking-wider uppercase mb-3">Keahlian Utama</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 bg-blue-600/10 text-blue-400 text-sm font-medium rounded-lg border border-blue-500/20 hover:bg-blue-600 hover:text-white transition-all duration-200 cursor-default">Digital Marketing Strategy</span>
-                            <span class="px-3 py-1.5 bg-blue-600/10 text-blue-400 text-sm font-medium rounded-lg border border-blue-500/20 hover:bg-blue-600 hover:text-white transition-all duration-200 cursor-default">Digital Marketing</span>
-                            <span class="px-3 py-1.5 bg-blue-600/10 text-blue-400 text-sm font-medium rounded-lg border border-blue-500/20 hover:bg-blue-600 hover:text-white transition-all duration-200 cursor-default">Competitor & Market Research</span>
-                            <span class="px-3 py-1.5 bg-neutral-900 text-gray-400 text-sm font-medium rounded-lg border border-neutral-800 hover:border-neutral-700 cursor-default">Manajemen Data Produk</span>
-                            <span class="px-3 py-1.5 bg-neutral-900 text-gray-400 text-sm font-medium rounded-lg border border-neutral-800 hover:border-neutral-700 cursor-default">Conversion Rate Optimization (CRO)</span>
-                            <span class="px-3 py-1.5 bg-neutral-900 text-gray-400 text-sm font-medium rounded-lg border border-neutral-800 hover:border-neutral-700 cursor-default">Administrasi Data</span>
-                        </div>
-                    </div>
 
-                    <div>
-                        <h3 class="text-sm font-bold text-gray-600 tracking-wider uppercase mb-3">Teknologi Pendukung (IT)</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 bg-neutral-900 text-amber-500/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-amber-500/30 cursor-default">HTML5 & CSS3 Dasar</span>
-                            <span class="px-3 py-1.5 bg-neutral-900 text-red-400/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-red-400/30 cursor-default">PHP & Laravel (Sistem Dasar)</span>
-                            <span class="px-3 py-1.5 bg-neutral-900 text-purple-400/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-purple-400/30 cursor-default">Git & GitHub</span>
-                            <span class="px-3 py-1.5 bg-neutral-900 text-emerald-400/90 border border-neutral-800 text-sm font-medium rounded-lg hover:border-emerald-400/30 cursor-default">Input & Olah Data</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-gray-600 tracking-wider uppercase mb-3">Karakter Kerja</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Problem Solving</span>
-                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Komunikasi Efektif</span>
-                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Kerjasama Tim</span>
-                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Manajemen Waktu</span>
-                            <span class="px-2.5 py-1 bg-neutral-900 text-gray-400 text-xs font-medium rounded-md border border-neutral-800 cursor-default">Disiplin & Tanggung Jawab</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="py-20 bg-neutral-950 border-t border-b border-neutral-900/70 reveal">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-white mb-4">Pengalaman Kerja & Proyek</h2>
-            <p class="text-gray-400 text-center max-w-xl mx-auto mb-12">Rekam jejak kontribusi saya dalam pengembangan proyek digital sepanjang tahun 2024 - 2025.</p>
-            
-            <div class="space-y-6">
-                <div class="bg-neutral-900/40 backdrop-blur-xs p-6 rounded-2xl border border-neutral-900 hover:border-neutral-800 shadow-md hover:shadow-blue-500/[0.02] hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                <div id="skills-section" class="space-y-5 bg-neutral-900/20 p-6 rounded-2xl border border-neutral-900">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center gap-2">🚀 Kemampuan</h3>
+                    
+                    <div class="space-y-4">
                         <div>
-                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Project Analyst & Digital Strategist</h3>
-                            <p class="text-sm text-blue-400 font-medium">Pengembangan Platform Digital UMKM</p>
+                            <div class="flex justify-between text-xs font-medium mb-1">
+                                <span class="text-gray-300">Microsoft Office (Word & Excel)</span>
+                                <span class="text-blue-400">80%</span>
+                            </div>
+                            <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                                <div class="skill-bar bg-blue-500 h-2 rounded-full w-0 transition-all duration-1000 ease-out" data-width="80%"></div>
+                            </div>
                         </div>
-                        <span class="mt-2 sm:mt-0 text-xs font-semibold px-3 py-1 bg-neutral-900 text-gray-400 rounded-full w-max border border-neutral-800 group-hover:bg-blue-950/50 group-hover:text-blue-400 group-hover:border-blue-900/50 transition-colors">2024 - 2025</span>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1">
+                                <span class="text-gray-300">Administrasi Bisnis & Data</span>
+                                <span class="text-blue-400">90%</span>
+                            </div>
+                            <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                                <div class="skill-bar bg-blue-500 h-2 rounded-full w-0 transition-all duration-1000 ease-out" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1">
+                                <span class="text-gray-300">Komunikasi & Kerja Tim</span>
+                                <span class="text-blue-400">90%</span>
+                            </div>
+                            <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                                <div class="skill-bar bg-blue-500 h-2 rounded-full w-0 transition-all duration-1000 ease-out" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1">
+                                <span class="text-gray-300">UI Design & Analisis Data</span>
+                                <span class="text-blue-400">75%</span>
+                            </div>
+                            <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                                <div class="skill-bar bg-blue-500 h-2 rounded-full w-0 transition-all duration-1000 ease-out" data-width="75%"></div>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="space-y-2.5 text-gray-400 text-sm list-disc pl-5">
-                        <li><strong class="text-gray-200">Inisiasi Media Penjualan Online:</strong> Merancang dan membangun website UMKM sebagai sarana utama penjualan produk guna memperluas jangkauan pasar secara digital.</li>
-                        <li><strong class="text-gray-200">Optimasi Pengalaman Pengguna (UI/UX):</strong> Menyusun dan membenahi tampilan website agar lebih interaktif, informatif, dan memudahkan pelanggan dalam bertransaksi.</li>
-                        <li><strong class="text-gray-200">Analisis Kebutuhan Fitur:</strong> Mengidentifikasi, menganalisis, dan memetakan fitur-fitur penting yang krusial sesuai dengan target kebutuhan operasional penjualan ritel.</li>
-                        <li><strong class="text-gray-200">Manajemen Data Produk:</strong> Mengelola struktur data dan input informasi produk pada sistem e-commerce agar katalog terarsip dengan rapi dan mudah dicari konsumen.</li>
-                        <li><strong class="text-gray-200">Kolaborasi Lintas Tim:</strong> Bekerja sama secara aktif dengan tim teknis dalam proses pengembangan website dari tahap perancangan strategi hingga sistem siap digunakan (*live*).</li>
-                    </ul>
                 </div>
             </div>
+
+            <div class="mt-8 border-t border-neutral-900 pt-10 overflow-hidden relative">
+                <h3 class="text-lg font-semibold text-white mb-6 text-center md:text-left flex items-center justify-center md:justify-start gap-2">💡 Aplikasi & Teknologi (Tools)</h3>
+                
+               <div class="w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_10%,_black_90%,transparent_100%)]">
+    <div class="animate-marquee gap-4 py-2">
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0 hover:border-neutral-700 transition-colors">
+            <img src="https://www.svgrepo.com/show/452228/html-5.svg" class="h-10 mx-auto mb-2 object-contain" alt="HTML">
+            <span class="text-xs font-medium text-gray-400 block truncate">HTML</span>
         </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0 hover:border-neutral-700 transition-colors">
+            <img src="https://www.svgrepo.com/show/452185/css-3.svg" class="h-10 mx-auto mb-2 object-contain" alt="CSS">
+            <span class="text-xs font-medium text-gray-400 block truncate">CSS</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0 hover:border-neutral-700 transition-colors">
+           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="h-10 mx-auto mb-2 object-contain" alt="Git & GitHub">
+            <span class="text-xs font-medium text-gray-400 block truncate">Git & GitHub</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0 hover:border-neutral-700 transition-colors">
+            <img src="https://www.svgrepo.com/show/353985/laravel.svg" class="h-10 mx-auto mb-2 object-contain" alt="PHP & Laravel">
+            <span class="text-xs font-medium text-gray-400 block truncate">PHP & Laravel</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0 hover:border-neutral-700 transition-colors">
+            <img src="https://www.svgrepo.com/show/373589/excel.svg" class="h-10 mx-auto mb-2 object-contain" alt="Excel">
+            <span class="text-xs font-medium text-gray-400 block truncate">Excel</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0 hover:border-neutral-700 transition-colors">
+           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="h-10 mx-auto mb-2 object-contain rounded-md" alt="JS">
+            <span class="text-xs font-medium text-gray-400 block truncate">JS</span>
+        </div>
+
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0">
+            <img src="https://www.svgrepo.com/show/452228/html-5.svg" class="h-10 mx-auto mb-2 object-contain" alt="HTML">
+            <span class="text-xs font-medium text-gray-400 block truncate">HTML</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0">
+            <img src="https://www.svgrepo.com/show/452185/css-3.svg" class="h-10 mx-auto mb-2 object-contain" alt="CSS">
+            <span class="text-xs font-medium text-gray-400 block truncate">CSS</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0">
+           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="h-10 mx-auto mb-2 object-contain" alt="Git & GitHub">
+            <span class="text-xs font-medium text-gray-400 block truncate">Git & GitHub</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0">
+            <img src="https://www.svgrepo.com/show/353985/laravel.svg" class="h-10 mx-auto mb-2 object-contain" alt="PHP & Laravel">
+            <span class="text-xs font-medium text-gray-400 block truncate">PHP & Laravel</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0">
+            <img src="https://www.svgrepo.com/show/373589/excel.svg" class="h-10 mx-auto mb-2 object-contain" alt="Excel">
+            <span class="text-xs font-medium text-gray-400 block truncate">Excel</span>
+        </div>
+        <div class="bg-neutral-900/40 px-6 py-4 w-36 rounded-xl border border-neutral-900 text-center flex-shrink-0">
+           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="h-10 mx-auto mb-2 object-contain rounded-md" alt="JS">
+            <span class="text-xs font-medium text-gray-400 block truncate">JS</span>
+        </div>
+    </div>
+</div>
     </section>
 
-    <!-- PROJECTS SECTION -->
     <section id="projects" class="py-20 bg-neutral-950 reveal">
+        <div class="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-4 text-white">Studi Kasus Proyek</h2>
             <p class="text-gray-400 text-center max-w-xl mx-auto mb-12">
@@ -231,8 +324,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 justify-center max-w-4xl mx-auto">
                 
-                <!-- Proyek 1 (Toko Kue Kharisma) -->
-                <div class="group bg-neutral-900/30 rounded-2xl overflow-hidden shadow-xl border border-neutral-900/80 hover:border-blue-500/30 hover:shadow-blue-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                <div class="group bg-neutral-900/20 rounded-2xl overflow-hidden shadow-xl border border-neutral-900 hover:border-blue-500/30 hover:shadow-blue-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
                     <div>
                         <div class="reveal-img h-52 overflow-hidden bg-neutral-900 border-b border-neutral-900 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/menu.jpg', 'Toko Kue Kharisma')">
                             <img src="assets/menu.jpg" alt="Toko Kue Kharisma" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -259,8 +351,7 @@
                     </div>
                 </div>
 
-                <!-- Proyek 2 (Toko Motion Pants) -->
-                <div class="group bg-neutral-900/30 rounded-2xl overflow-hidden shadow-xl border border-neutral-900/80 hover:border-indigo-500/30 hover:shadow-indigo-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                <div class="group bg-neutral-900/20 rounded-2xl overflow-hidden shadow-xl border border-neutral-900 hover:border-indigo-500/30 hover:shadow-indigo-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
                     <div>
                         <div class="reveal-img h-52 overflow-hidden bg-neutral-900 border-b border-neutral-900 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/celana.jpg', 'Toko Motion Pants')">
                             <img src="assets/celana.jpg" alt="Toko Motion Pants" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -291,7 +382,6 @@
         </div>
     </section>
 
-    <!-- LIGHTBOX PREVIEW MODAL -->
     <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0" onclick="closePreview()">
         <button class="absolute top-6 right-6 text-white text-4xl font-light cursor-pointer hover:text-gray-300 hover:rotate-90 transition-all duration-300">&times;</button>
         <div class="max-w-4xl max-h-[85vh] relative flex flex-col items-center scale-90 transition-transform duration-300" id="modalContainer" onclick="event.stopPropagation()">
@@ -300,14 +390,15 @@
         </div>
     </div>
 
-    <!-- CONTACT SECTION -->
     <section id="contact" class="py-20 bg-neutral-950 border-t border-neutral-900/60 reveal">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Mari Terhubung</h2>
+       <div class="absolute inset-0 z-0 opacity-[0.03] bg-[linear-gradient(...)]"></div>
+
+<div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">Mari Terhubung</h2>
             <p class="text-gray-400 max-w-xl mx-auto mb-12">
                 Tertarik untuk berkolaborasi, mendiskusikan analisis proyek bisnis digital, atau membutuhkan strategi pemasaran online? Silakan hubungi saya.
             </p>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6 font-medium text-gray-300">
+          <div class="relative z-10 flex flex-wrap justify-center gap-4 md:gap-6 font-medium text-gray-300">
                 <a href="mailto:dhandyfardhan5@gmail.com" class="hover:text-blue-400 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 bg-neutral-900/50 px-4 py-2.5 rounded-xl border border-neutral-900 shadow-xs text-sm sm:text-base">
                     <span>📧</span> dhandyfardhan5@gmail.com
                 </a>
@@ -322,19 +413,16 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-neutral-950 text-gray-600 py-8 text-center text-sm border-t border-neutral-900">
         <p>&copy; 2026 Dhandy Fardhan.</p>
     </footer>
 
-    <!-- BACK TO TOP BUTTON -->
     <button id="backToTop" class="fixed bottom-6 right-6 z-40 bg-blue-600 text-white p-3 rounded-full shadow-lg shadow-blue-600/20 translate-y-20 opacity-0 transition-all duration-300 hover:bg-blue-500 hover:scale-110 active:scale-90 cursor-pointer" aria-label="Back to Top">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
         </svg>
     </button>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         // MOBILE HAMBURGER MENU INTERACTION
         const menuBtn = document.getElementById('menuBtn');
@@ -428,7 +516,7 @@
             }
         });
 
-        // INTERSECTION OBSERVER FOR IMAGES
+        // INTERSECTION OBSERVER FOR IMAGES & LIVE SKILLS BAR ANIMATION
         document.addEventListener("DOMContentLoaded", function () {
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -446,7 +534,69 @@
 
             const targetImages = document.querySelectorAll('.reveal-img');
             targetImages.forEach(img => imageObserver.observe(img));
+
+            // Animasi untuk Skill Bar saat ter-trigger scroll
+            const skillObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = entry.target.querySelectorAll('.skill-bar');
+                        bars.forEach(bar => {
+                            const targetWidth = bar.getAttribute('data-width');
+                            bar.style.width = targetWidth;
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            const skillsSection = document.getElementById('skills-section');
+            if (skillsSection) skillObserver.observe(skillsSection);
         });
+        const glow = document.getElementById('cursor-glow');
+
+document.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+});
+function animateCounter(el, target, duration = 1200) {
+    let start = 0;
+    let startTime = null;
+
+    function update(currentTime) {
+        if (!startTime) startTime = currentTime;
+
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = Math.floor(progress * target);
+
+        el.innerText = value + (target === 100 ? "%" : "+");
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            el.innerText = target + (target === 100 ? "%" : "+");
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+const counters = document.querySelectorAll('.counter');
+
+const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target'));
+
+            animateCounter(el, target);
+
+            observer.unobserve(el);
+        }
+    });
+}, { threshold: 0.6 });
+
+counters.forEach(counter => {
+    counterObserver.observe(counter);
+});
     </script>
 </body>
 </html>
