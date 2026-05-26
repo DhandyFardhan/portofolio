@@ -94,7 +94,118 @@
         left 0.08s linear,
         top 0.08s linear;
 }
+.nav-link{
+    position: relative;
+    padding: 10px 18px;
+    border-radius: 14px;
+    color: #9ca3af;
+    font-weight: 500;
+    transition: all .3s ease;
+    overflow: hidden;
+}
 
+.nav-link::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+        135deg,
+        rgba(59,130,246,.15),
+        rgba(99,102,241,.08)
+    );
+    opacity:0;
+    transition:.3s;
+    border-radius:14px;
+}
+
+.nav-link::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    bottom:6px;
+    width:0%;
+    height:2px;
+    background:linear-gradient(to right,#3b82f6,#818cf8);
+    transition:.35s ease;
+    transform:translateX(-50%);
+    border-radius:999px;
+}
+
+.nav-link:hover{
+    color:white;
+    transform:translateY(-1px);
+}
+
+.nav-link:hover::before{
+    opacity:1;
+}
+
+.nav-link:hover::after{
+    width:65%;
+}
+html, body{
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+section{
+    position:relative;
+    overflow:hidden;
+}
+
+@media (max-width:768px){
+
+    h1{
+        line-height:1.2;
+    }
+
+    .animate-marquee{
+        animation-duration: 38s;
+    }
+
+    #cursor-glow{
+        display:none;
+    }
+
+    .nav-link{
+        padding:8px 14px;
+        font-size:.9rem;
+    }
+
+    .reveal{
+        transform:translateY(25px);
+    }
+
+    .group:hover{
+        transform:none !important;
+    }
+}.project-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.project-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.06),
+        transparent 40%
+    );
+
+    opacity:0;
+    transition:.5s;
+}
+
+.project-card:hover::before{
+    opacity:1;
+}
     </style>
 </head>
 <body class="bg-neutral-950 text-gray-300 antialiased font-sans selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
@@ -102,37 +213,146 @@
     <div class="absolute top-40 left-10 w-48 h-48 border border-blue-500/5 rounded-2xl pointer-events-none animate-float hidden lg:block" style="animation-delay: 1s;"></div>
     <div class="absolute top-[120vh] right-12 w-64 h-64 border border-indigo-500/5 rounded-full pointer-events-none animate-float hidden lg:block" style="animation-delay: 3s;"></div>
 
-    <nav class="sticky top-0 z-50 bg-neutral-950/70 backdrop-blur-md border-b border-neutral-900 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 tracking-tight hover:scale-105 transition-transform cursor-pointer">DhandyFardhan.</span>
-                
-                <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#home" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Home</a>
-                    <a href="#about" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Tentang & Skills</a>
-                    <a href="#projects" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Proyek</a>
-                    <a href="#contact" class="text-gray-400 hover:text-blue-400 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-500 after:transition-all after:duration-300 pb-1">Kontak</a>
-                </div>
+    <nav class="sticky top-4 z-50 px-4">
+    <div class="max-w-6xl mx-auto">
 
-                <button id="menuBtn" class="md:hidden p-2 text-gray-400 hover:text-blue-400 focus:outline-hidden" aria-label="Toggle Menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
+        <div class="
+            flex items-center justify-between
+            h-18 px-6
+            rounded-2xl
+            bg-white/5
+            backdrop-blur-xl
+            border border-white/10
+            shadow-[0_8px_32px_rgba(0,0,0,0.35)]
+            relative
+            overflow-hidden
+        ">
+
+            <!-- Glow Gradient -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="
+                    absolute inset-0
+                    bg-gradient-to-r
+                    from-blue-500/10
+                    via-indigo-500/5
+                    to-cyan-500/10
+                "></div>
             </div>
-        </div>
 
-        <div id="mobileMenu" class="hidden md:hidden bg-neutral-950 border-b border-neutral-900 transition-all duration-300">
-            <div class="px-4 pt-2 pb-4 space-y-2 font-medium shadow-inner">
-                <a href="#home" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Home</a>
-                <a href="#about" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Tentang & Skills</a>
-                <a href="#projects" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Proyek</a>
-                <a href="#contact" class="block px-3 py-2 rounded-lg text-gray-400 hover:bg-neutral-900 hover:text-blue-400 transition-colors">Kontak</a>
+            <!-- Logo -->
+            <div class="relative group cursor-pointer">
+    <span class="
+        relative z-10
+        text-2xl sm:text-3xl
+        font-extrabold
+        tracking-tight
+        text-white
+        transition-all duration-500
+        group-hover:scale-105
+        flex items-center gap-1
+    ">
+        <span class="
+            bg-gradient-to-r
+            from-blue-400
+            via-cyan-300
+            to-indigo-400
+            bg-clip-text
+            text-transparent
+            drop-shadow-[0_0_18px_rgba(59,130,246,0.45)]
+            animate-text-gradient
+        ">
+            Dhandy
+        </span>
+
+        <span class="
+            text-white/90
+            italic
+            font-light
+            tracking-wide
+        ">
+            Fardhan
+        </span>
+
+        <span class="
+            w-2 h-2 rounded-full
+            bg-blue-400
+            shadow-[0_0_15px_#3b82f6]
+            animate-pulse
+            mt-2
+        "></span>
+    </span>
+
+    <div class="
+        absolute -bottom-1 left-0
+        h-[2px] w-0
+        bg-gradient-to-r from-blue-500 to-cyan-400
+        transition-all duration-500
+        group-hover:w-full
+    "></div>
+</div>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-2 relative z-10">
+
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">Tentang & Skills</a>
+                <a href="#projects" class="nav-link">Proyek</a>
+                <a href="#contact" class="nav-link">Kontak</a>
+
             </div>
-        </div>
-    </nav>
 
-    <section id="home" class="min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-neutral-950 via-neutral-950 to-blue-950/20 px-4 overflow-hidden relative">
+            <!-- Mobile Button -->
+            <button id="menuBtn"
+                class="
+                    md:hidden
+                    relative z-10
+                    p-2 rounded-xl
+                    bg-white/5
+                    border border-white/10
+                    hover:bg-white/10
+                    transition
+                ">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu"
+    class="hidden md:hidden mt-3 mx-4 rounded-2xl border border-white/10 bg-neutral-900/95 backdrop-blur-xl overflow-hidden z-40">
+
+    <a href="#home" class="block px-6 py-4 text-gray-300 hover:bg-white/5">Home</a>
+    <a href="#about" class="block px-6 py-4 text-gray-300 hover:bg-white/5">Tentang & Skills</a>
+    <a href="#projects" class="block px-6 py-4 text-gray-300 hover:bg-white/5">Proyek</a>
+    <a href="#contact" class="block px-6 py-4 text-gray-300 hover:bg-white/5">Kontak</a>
+
+</div>
+
+    <section id="home" class="min-h-screen pt-28 flex items-center bg-gradient-to-br from-neutral-950 via-neutral-950 to-blue-950/20 px-4 overflow-hidden relative">   
+        <div class="absolute inset-0 overflow-hidden">
+
+    <div class="
+        absolute top-20 left-1/2
+        -translate-x-1/2
+        w-[700px] h-[700px]
+        bg-blue-500/10
+        blur-[140px]
+        rounded-full
+    "></div>
+
+    <div class="
+        absolute bottom-0 right-0
+        w-[400px] h-[400px]
+        bg-indigo-500/10
+        blur-[120px]
+        rounded-full
+    "></div>
+
+</div>
         <div class="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         <div class="absolute top-1/4 -left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl hidden md:block animate-pulse"></div>
         <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl hidden md:block animate-pulse" style="animation-duration: 8s;"></div>
@@ -324,7 +544,8 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 justify-center max-w-4xl mx-auto">
                 
-                <div class="group bg-neutral-900/20 rounded-2xl overflow-hidden shadow-xl border border-neutral-900 hover:border-blue-500/30 hover:shadow-blue-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                <div class="group bg-white/[0.03]
+backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl border border-neutral-900 hover:border-blue-500/30 hover:shadow-blue-500/[0.03] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
                     <div>
                         <div class="reveal-img h-52 overflow-hidden bg-neutral-900 border-b border-neutral-900 relative cursor-pointer opacity-0 translate-y-8 transition-all duration-1000 ease-out" onclick="openPreview('assets/menu.jpg', 'Toko Kue Kharisma')">
                             <img src="assets/menu.jpg" alt="Toko Kue Kharisma" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
